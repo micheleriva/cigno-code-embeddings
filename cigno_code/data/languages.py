@@ -227,7 +227,7 @@ LANGUAGE_CONFIG: dict[str, LanguageConfig] = {
         name="sql",
         grammar_module="tree_sitter_sql",
         extensions=[".sql"],
-        function_nodes=["statement"],  # SQL doesn't have clean function nodes
+        function_nodes=["create_view"],
         class_nodes=["create_table"],
         doc_comment_node="comment",
     ),

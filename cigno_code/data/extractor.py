@@ -64,7 +64,7 @@ def _find_name(node: Node, config: LanguageConfig, source: bytes) -> str | None:
 
     # Fallback: look for an identifier-like child
     for child in node.children:
-        if child.type in ("identifier", "value_name", "simple_identifier"):
+        if child.type in ("identifier", "value_name", "simple_identifier", "object_reference"):
             return _get_node_text(child, source)
 
     return None
