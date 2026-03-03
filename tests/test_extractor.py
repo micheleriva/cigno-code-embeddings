@@ -1,7 +1,7 @@
 """Tests for tree-sitter symbol extraction."""
 
 import pytest
-from src.data.extractor import extract_symbols
+from cigno_code.data.extractor import extract_symbols
 
 
 def test_python_function():

@@ -8,8 +8,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import load_config
-from src.export.onnx import export_to_onnx, quantize_onnx, verify_onnx
+from cigno_code.config import load_config
+from cigno_code.export.onnx import export_to_onnx, quantize_onnx, verify_onnx
 
 
 def main():

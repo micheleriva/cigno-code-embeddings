@@ -1,6 +1,6 @@
 """Tests for text_formatter — must match Cigno's text-formatter.ts output."""
 
-from src.data.text_formatter import format_embedding_text, SymbolForEmbedding
+from cigno_code.data.text_formatter import format_embedding_text, SymbolForEmbedding
 
 
 def test_full_symbol():

@@ -8,8 +8,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import load_config
-from src.data.teacher import generate_teacher_embeddings
+from cigno_code.config import load_config
+from cigno_code.data.teacher import generate_teacher_embeddings
 
 
 def main():

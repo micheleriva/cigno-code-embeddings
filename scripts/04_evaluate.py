@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.config import load_config
-from src.evaluation.benchmark import run_evaluation, compare_with_teacher
+from cigno_code.config import load_config
+from cigno_code.evaluation.benchmark import run_evaluation, compare_with_teacher
 
 
 def main():
