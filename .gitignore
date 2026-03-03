@@ -1,6 +1,6 @@
-# Data (large files)
-data/
-output/
+# Data (large files — only the top-level data dir, not cigno_code/data/)
+/data/
+/output/
 
 # Python
 __pycache__/
