@@ -1,0 +1,49 @@
+cigno-code-small-v1
+Copyright (c) 2026 Michele Riva
+
+This model incorporates components from the following projects:
+
+---
+
+jinaai/jina-embeddings-v2-base-code
+Copyright (c) Jina AI GmbH
+Licensed under the Apache License, Version 2.0
+https://huggingface.co/jinaai/jina-embeddings-v2-base-code
+
+Used as the teacher model for knowledge distillation. The student model
+was trained to reproduce the teacher's embedding behavior; no weights
+from the teacher model are included in this distribution.
+
+---
+
+nreimers/MiniLM-L6-H384-uncased
+Copyright (c) Microsoft Corporation
+Licensed under the MIT License
+https://huggingface.co/nreimers/MiniLM-L6-H384-uncased
+
+Used as the base student architecture. The model weights were fine-tuned
+via knowledge distillation.
+
+---
+
+bigcode/starcoderdata
+Licensed under BigCode OpenRAIL-M v1
+https://huggingface.co/datasets/bigcode/starcoderdata
+
+Used as training data. Use of models trained on this data is subject to
+the OpenRAIL-M v1 use restrictions:
+https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement
+
+---
+
+CodeSearchNet
+Copyright (c) 2019 GitHub, Inc.
+Licensed under the MIT License
+https://github.com/github/CodeSearchNet
+
+Used for contrastive fine-tuning and evaluation.
+
+Citation:
+  Husain, H., Wu, H.-H., Gazit, T., Allamanis, M., & Brockschmidt, M.
+  (2019). CodeSearchNet Challenge: Evaluating the State of Semantic Code
+  Search. arXiv preprint arXiv:1909.09436.

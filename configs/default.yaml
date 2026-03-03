@@ -10,6 +10,24 @@ data:
     - java
     - c
     - c++
+    - ruby
+    - php
+    - csharp
+    - kotlin
+    - swift
+    - scala
+    - shell
+    - lua
+    - haskell
+    - julia
+    - elixir
+    - ocaml
+    - zig
+    - fortran
+    - sql
+    - objc
+    - powershell
+    - commonlisp
   target_snippets: 1_000_000
   max_body_chars: 512
   max_seq_length: 256

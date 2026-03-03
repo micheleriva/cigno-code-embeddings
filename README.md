@@ -39,6 +39,18 @@ Base student architecture: [nreimers/MiniLM-L6-H384-uncased](https://huggingface
 - **Training data**: [bigcode/starcoderdata](https://huggingface.co/datasets/bigcode/starcoderdata) (OpenRAIL-M v1, BigCode)
 - **Evaluation data**: [CodeSearchNet](https://github.com/github/CodeSearchNet) (MIT, GitHub) — Husain et al., 2019 ([arXiv:1909.09436](https://arxiv.org/abs/1909.09436))
 
+## Use Restrictions
+
+This model was trained on data governed by the [BigCode OpenRAIL-M v1](https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement) license. By using this model, you agree not to use it to:
+
+1. Violate applicable laws or regulations
+2. Exploit or harm minors
+3. Generate malware or code designed to disrupt, damage, or gain unauthorized access to computer systems
+4. Generate or spread disinformation intended to harm others
+5. Generate content that is presented to the public without disclosing it is machine-generated
+
+For the full list of use restrictions, see [BigCode OpenRAIL-M v1 Attachment A](https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement).
+
 ## License
 
-[MIT](/LICENSE.md)
+[MIT](LICENSE) — subject to the use restrictions above.
