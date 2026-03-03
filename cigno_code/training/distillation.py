@@ -45,9 +45,14 @@ def _load_corpus_dataset(corpus_path: Path, embeddings_path: Path, dimensions: i
         shape=(n, dimensions),
     )
 
+    # Copy memmap into a regular numpy array (2.7GB for 880K×768),
+    # then let HF Dataset wrap it with Arrow zero-copy instead of
+    # converting to Python lists (which would use ~30GB of RAM).
+    labels = np.array(embeddings)
+
     return Dataset.from_dict({
         "sentence": texts,
-        "label": [embeddings[i].tolist() for i in range(n)],
+        "label": labels,
     })
 
 
