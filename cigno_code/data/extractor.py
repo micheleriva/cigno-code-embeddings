@@ -64,8 +64,17 @@ def _find_name(node: Node, config: LanguageConfig, source: bytes) -> str | None:
 
     # Fallback: look for an identifier-like child
     for child in node.children:
-        if child.type in ("identifier", "value_name", "simple_identifier", "object_reference"):
+        if child.type in (
+            "identifier", "value_name", "simple_identifier",
+            "object_reference", "function_name", "sym_lit",
+        ):
             return _get_node_text(child, source)
+
+    # Deeper fallback: check grandchildren (e.g., Common Lisp defun_header → sym_lit)
+    for child in node.children:
+        for grandchild in child.children:
+            if grandchild.type in ("identifier", "sym_lit"):
+                return _get_node_text(grandchild, source)
 
     return None
 

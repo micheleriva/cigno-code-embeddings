@@ -37,7 +37,7 @@ data:
 teacher:
   model_id: jinaai/jina-embeddings-v2-base-code
   dimensions: 768
-  batch_size: 256
+  batch_size: 64
 
 student:
   base_model_id: nreimers/MiniLM-L6-H384-uncased

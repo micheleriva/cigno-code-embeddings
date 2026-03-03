@@ -43,6 +43,10 @@ def generate_teacher_embeddings(config: Config) -> None:
 
     logger.info(f"Loading teacher model: {config.teacher.model_id}")
     teacher = SentenceTransformer(config.teacher.model_id, trust_remote_code=True)
+    # Cap sequence length to avoid OOM on long code snippets.
+    # The student uses 256 tokens, so there's no benefit to encoding longer
+    # sequences in the teacher — the extra tokens won't be seen by the student.
+    teacher.max_seq_length = config.data.max_seq_length
 
     # Use memmap so we don't need 15GB of RAM
     emb_file = output_path / "teacher_embeddings.npy"
