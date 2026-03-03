@@ -3,7 +3,12 @@
 # Run this on RunPod with: nohup bash scripts/run_all.sh > training.log 2>&1 &
 set -e
 
+# Ensure we're in the repo root
+cd "$(dirname "$0")/.."
+export PYTHONPATH="$(pwd):$PYTHONPATH"
+
 echo "=== cigno-code-small-v1 training pipeline ==="
+echo "Working directory: $(pwd)"
 echo "Started at $(date)"
 
 # Phase 1: Extract corpus
