@@ -25,7 +25,6 @@ data:
     - zig
     - fortran
     - sql
-    - objc
     - powershell
     - commonlisp
   target_snippets: 1_000_000

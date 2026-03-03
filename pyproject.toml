@@ -37,7 +37,6 @@ dependencies = [
     "tree-sitter-zig",
     "tree-sitter-fortran",
     "tree-sitter-sql",
-    "tree-sitter-objc",
     "tree-sitter-powershell",
     "tree-sitter-commonlisp",
     "numpy>=1.26.0",

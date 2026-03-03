@@ -53,9 +53,8 @@ LANGUAGE_TO_DATA_DIR = {
     "zig": "zig",
     "fortran": "fortran",
     "sql": "sql",
-    "objc": "objective-c",
     "powershell": "powershell",
-    "commonlisp": "commonlisp",
+    "commonlisp": "common-lisp",
 }
 
 
