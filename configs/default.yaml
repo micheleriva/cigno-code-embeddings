@@ -1,0 +1,60 @@
+# cigno-code-small-v1 training configuration
+
+data:
+  languages:
+    - python
+    - typescript
+    - javascript
+    - go
+    - rust
+    - java
+    - c
+    - c++
+  target_snippets: 1_000_000
+  max_body_chars: 512
+  max_seq_length: 256
+  corpus_path: ./data/corpus
+  teacher_embeddings_path: ./data/teacher_embeddings
+  eval_path: ./data/eval
+
+teacher:
+  model_id: jinaai/jina-embeddings-v2-base-code
+  dimensions: 768
+  batch_size: 256
+
+student:
+  base_model_id: nreimers/MiniLM-L6-H384-uncased
+  dimensions: 384
+
+stage_a:
+  num_epochs: 3
+  batch_size: 256
+  learning_rate: 2.0e-5
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  fp16: true
+  eval_steps: 1000
+  save_steps: 5000
+  logging_steps: 100
+  output_dir: ./output/stage_a
+
+stage_b:
+  num_epochs: 1
+  batch_size: 128
+  learning_rate: 1.0e-5
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  fp16: true
+  eval_steps: 500
+  save_steps: 2000
+  logging_steps: 50
+  output_dir: ./output/stage_b
+
+export:
+  onnx_output_dir: ./output/onnx
+  quantized_output_dir: ./output/onnx-q8
+
+evaluation:
+  codesearchnet_test_size: 10000
+  codesearchnet_dev_size: 10000
+  mrr_threshold: 0.85
