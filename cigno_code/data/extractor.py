@@ -190,34 +190,31 @@ def extract_symbols(
     symbols: list[SymbolForEmbedding] = []
     target_types = set(config.all_symbol_nodes)
 
-    def visit(node: Node) -> None:
+    # Iterative DFS to avoid RecursionError on deeply nested files
+    stack: list[Node] = [tree.root_node]
+    while stack:
+        node = stack.pop()
+
         if node.type in target_types:
             name = _find_name(node, config, source_bytes)
-            if name is None or len(name) < 2:
-                # Skip anonymous or single-char symbols
-                for child in node.children:
-                    visit(child)
-                return
+            if name is not None and len(name) >= 2:
+                body = _get_node_text(node, source_bytes)
+                symbol_type = _classify_symbol_type(node.type, config)
+                signature = _build_signature(node, source_bytes, config)
+                doc_comment = _find_doc_comment(node, source_bytes, config)
 
-            body = _get_node_text(node, source_bytes)
-            symbol_type = _classify_symbol_type(node.type, config)
-            signature = _build_signature(node, source_bytes, config)
-            doc_comment = _find_doc_comment(node, source_bytes, config)
-
-            symbols.append(
-                SymbolForEmbedding(
-                    symbol_name=name,
-                    symbol_type=symbol_type,
-                    signature=signature,
-                    doc_comment=doc_comment,
-                    body=body,
-                    file_path=file_path,
+                symbols.append(
+                    SymbolForEmbedding(
+                        symbol_name=name,
+                        symbol_type=symbol_type,
+                        signature=signature,
+                        doc_comment=doc_comment,
+                        body=body,
+                        file_path=file_path,
+                    )
                 )
-            )
 
-        # Visit children even for matched nodes (nested functions, inner classes)
-        for child in node.children:
-            visit(child)
+        # Push children in reverse order so leftmost is processed first
+        stack.extend(reversed(node.children))
 
-    visit(tree.root_node)
     return symbols
